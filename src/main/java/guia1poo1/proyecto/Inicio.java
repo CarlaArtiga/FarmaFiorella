@@ -9,9 +9,16 @@ package guia1poo1.proyecto;
  *
  * @author LENOVO
  */
+ 
 public class Inicio {
+    
+    //Instanciar clase
+    static Acceso ac = new Acceso();
+    static Menu mn = new Menu();
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        ac.bienvenidad();
+        mn.ingresoSistema();
     }
 }
