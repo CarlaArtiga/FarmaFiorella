@@ -8,6 +8,7 @@ package guia1poo1.proyecto;
  *
  * @author LENOVO
  */
+import java.utils.Scanner
 public class Menu {
     
     //Impresion de mensajes
@@ -17,6 +18,8 @@ public class Menu {
     private String opcion2 = "2- Consultar inventarios";
     private String opcion3 = "3- Cambiar contraseña";
     private String opcion4 = "4- Salir del sistema";
+    private int opc;
+    private Scanner lector = new Scanner(System.in);
 
     public Menu() {
     }
