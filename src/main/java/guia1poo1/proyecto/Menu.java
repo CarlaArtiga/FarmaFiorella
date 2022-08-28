@@ -71,12 +71,34 @@ public class Menu {
 
     //Procedimiento o Funcion
     public void ingresoSistema() {
-        System.out.println(" ");
-        System.out.println(saludo);
-        System.out.println(mensaje);
-        System.out.println(opcion1);
-        System.out.println(opcion2);
-        System.out.println(opcion3);
-        System.out.println(opcion4);
+        do {
+            System.out.println(" ");
+            System.out.println(saludo);
+            System.out.println(mensaje);
+            System.out.println(opcion1);
+            System.out.println(opcion2);
+            System.out.println(opcion3);
+            System.out.println(opcion4);
+            System.out.print("Digite la opcion: ");
+            opc = lector.nextInt();
+            switch (opc) {
+                case 1:
+                    System.out.println("Opcion no disponible aun");
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Opcion no disponible aun");
+                    break;
+                case 4:
+                    System.out.println("Saliendo del sistema...");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opcion no definida");
+                    break;
+            }
+        } while (opc != 4);
+
     }
 }
