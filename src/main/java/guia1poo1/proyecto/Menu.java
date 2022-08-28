@@ -17,7 +17,10 @@ public class Menu {
     private String opcion2 = "2- Consultar inventarios";
     private String opcion3 = "3- Cambiar contraseña";
     private String opcion4 = "4- Salir del sistema";
+    
+    
 
+    
     public Menu() {
     }
 
