@@ -22,7 +22,6 @@ public class Inicio {
         ac.bienvenidad();
         mn.ingresoSistema();
         
-       p.MostrarInventario();
        
     }
 }
