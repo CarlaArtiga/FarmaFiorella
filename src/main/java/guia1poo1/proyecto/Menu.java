@@ -21,8 +21,6 @@ public class Menu {
     private int opc;
     private Scanner lector = new Scanner(System.in);
 
-
-    
     public Menu() {
     }
 
@@ -91,6 +89,8 @@ public class Menu {
                     System.out.println("Opcion no disponible aun");
                     break;
                 case 2:
+                    Producto p = new Producto();
+                    p.MostrarInventario();
                     break;
                 case 3:
                     System.out.println("Opcion no disponible aun");
@@ -104,6 +104,5 @@ public class Menu {
                     break;
             }
         } while (opc != 4);
-
     }
 }
