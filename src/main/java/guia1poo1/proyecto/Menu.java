@@ -8,7 +8,7 @@ package guia1poo1.proyecto;
  *
  * @author LENOVO
  */
-import java.util.Scanner
+import java.util.Scanner;
 public class Menu {
     
     //Impresion de mensajes
