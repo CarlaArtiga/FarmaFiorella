@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package guia1poo1.proyecto;
+import java.io.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,13 +11,14 @@ package guia1poo1.proyecto;
 public class Acceso {
     
     //Atributos acceso
-    private String usuario        = "admin";
-    private String clave          = "admin";
+    private String usuario        = "";
+    private String clave          = "";
     private String nombreSistema  = "FarmaFiorella";
-    private String bienvenida     = "Bienvenido al sistema de FaramaFiorella";
+    private String bienvenida     = "Bienvenido al sistema de ";
     private String mensaje        = "Por favor ingrese con sus credenciales";
     private String ingreseUsuario = "Ingresar usuario: ";
     private String ingreseclave   = "Ingresar contraseña: ";
+    
 
     //Constructor
     public Acceso() {
@@ -86,11 +87,47 @@ public class Acceso {
     public void bienvenidad() {
         System.out.println(bienvenida + nombreSistema);
         System.out.println(mensaje);
-        System.out.println(ingreseUsuario);
-        System.out.println(ingreseclave);
     }
-    
-    
-    
 
+    public void LecturaArchivo() {
+    
+        //String usu;
+        String clave;
+        String linea = null;
+        Scanner lector = new Scanner(System.in);
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        String[] acceso = new String[3];
+        boolean existe = false;
+
+        try {
+            archivo = new File("C:\\Users\\javy\\Documents\\PRC4\\FarmaFiorella\\FarmaFiorella\\Miembros.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+
+            System.out.println("Usuario: ");
+            usuario = lector.nextLine();
+            System.out.println("Clave: ");
+            clave = lector.nextLine();
+
+            //String linea;
+            int i = 0;
+            while ((linea = br.readLine()) != null) {
+                String[] usuarioclave = linea.split(",");
+                if (usuarioclave[0].equals(usuario) && usuarioclave[1].equals(clave)) {
+                    System.out.println("\nBienvenido " + usuario);
+                    existe = true;
+                    Menu m = new Menu();
+                    m.ingresoSistema();
+                }
+
+                }
+                if (!existe) {
+                    System.out.println("Usuario o clave incorrectos");
+            }
+        } catch (IOException e) {
+            e.getCause();
+        }
+    }
 }

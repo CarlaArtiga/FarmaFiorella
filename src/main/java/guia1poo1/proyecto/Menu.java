@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package guia1poo1.proyecto;
 
 /**
@@ -11,8 +7,8 @@ package guia1poo1.proyecto;
 import java.util.Scanner;
 public class Menu {
     
+    static Acceso ac = new Acceso();
     //Impresion de mensajes
-    private String saludo  = "Bienvenido (nombre: )";
     private String mensaje = "¿Que desea hacer?";
     private String opcion1 = "1- Venta nueva";
     private String opcion2 = "2- Consultar inventarios";
@@ -22,14 +18,6 @@ public class Menu {
     private Scanner lector = new Scanner(System.in);
 
     public Menu() {
-    }
-
-    public String getSaludo() {
-        return saludo;
-    }
-
-    public void setSaludo(String saludo) {
-        this.saludo = saludo;
     }
 
     public String getMensaje() {
@@ -75,8 +63,6 @@ public class Menu {
     //Procedimiento o Funcion
     public void ingresoSistema() {
         do {
-            System.out.println(" ");
-            System.out.println(saludo);
             System.out.println(mensaje);
             System.out.println(opcion1);
             System.out.println(opcion2);
