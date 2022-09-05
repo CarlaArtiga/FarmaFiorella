@@ -58,7 +58,7 @@ public class Acceso {
     
     //Retorno de bienvenida
     public void setBienvenida(String Bienvenida){
-        this.bienvenida = bienvenida;
+        this.bienvenida = Bienvenida;
     }
     
     //Retorno mensaje

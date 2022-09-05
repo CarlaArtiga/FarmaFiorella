@@ -15,6 +15,7 @@ public class Producto {
     private int[] IdProducto = new int[10];
     private float[] Precio = new float[10];
     
+    
 //Constructor sin parametros que sirve para instanciar la clase e inicializar los arrays
 
     public Producto() {
@@ -53,6 +54,8 @@ public class Producto {
         Precio[7] = (float) 17.02;
         Precio[8] = (float) 10.12;
         Precio[9] = (float) 27.01;
+        
+       
 
     }
     //Metodos getter y setter para cada atributo
