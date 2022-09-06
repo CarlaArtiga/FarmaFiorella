@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package guia1poo1.proyecto;
+import java.io.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,13 +11,28 @@ package guia1poo1.proyecto;
 public class Acceso {
     
     //Atributos acceso
-    private String usuario        = "admin";
-    private String clave          = "admin";
+    private String usuario        = "";
+    private String clave          = "";
     private String nombreSistema  = "FarmaFiorella";
-    private String bienvenida     = "Bienvenido al sistema de FaramaFiorella";
+    private String bienvenida     = "Bienvenido al sistema de ";
     private String mensaje        = "Por favor ingrese con sus credenciales";
     private String ingreseUsuario = "Ingresar usuario: ";
     private String ingreseclave   = "Ingresar contraseña: ";
+    
+    //Atributos que serviran para metodos de lectura y busqueda de usuario y clave
+    private String linea = null;
+    private Scanner lector = new Scanner(System.in);
+    private File archivo = null;
+    private FileReader fr = null;
+    private BufferedReader br = null;
+    private String[] acceso = new String[3];
+    private boolean existe = false;
+    
+    //atributos que serviran para la escritura de archivo
+   
+    private FileWriter escribir = null;
+    private PrintWriter pw = null;
+    
 
     //Constructor
     public Acceso() {
@@ -32,12 +47,12 @@ public class Acceso {
         this.usuario = usuario;
     }
 
-    //Función
+    
     public String getClave() {
         return clave;
     }
 
-    //Procedimiento
+    
     public void setClave(String clave) {
         this.clave = clave;
     }
@@ -46,22 +61,22 @@ public class Acceso {
         return nombreSistema;
     }
     
-    //Nombre del sistema
+   
     public void setNombreSistema(String nombreSistema){
     this.nombreSistema = nombreSistema;    
     }
     
-    //Devolcuion de bienvenida
+    
     public String getBienvenida(){
         return bienvenida;
     }
     
-    //Retorno de bienvenida
+    
     public void setBienvenida(String Bienvenida){
         this.bienvenida = Bienvenida;
     }
     
-    //Retorno mensaje
+    
     public String getMensaje(){
         return mensaje;
     }
@@ -82,15 +97,79 @@ public class Acceso {
         this.ingreseclave = ingreseclave;
     }
 
-    //Procedimiento o Funcion para imprimir el menu
+    //Procedimiento psts imprimir la bienvenida al usuario
     public void bienvenidad() {
         System.out.println(bienvenida + nombreSistema);
         System.out.println(mensaje);
-        System.out.println(ingreseUsuario);
-        System.out.println(ingreseclave);
+    }
+
+    //Metodo para leer el archivo y verificar el usuario y clave
+    public void InicioSesion() {
+    
+        try {
+            archivo = new File("C:\\Users\\javy\\Documents\\PRC4\\FarmaFiorella\\FarmaFiorella\\Miembros.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+
+            System.out.println("Usuario: ");
+            usuario = lector.nextLine();
+            System.out.println("Clave: ");
+            clave = lector.nextLine();
+
+           
+            while ((linea = br.readLine()) != null) {
+                String[] usuarioclave = linea.split(",");
+                if (usuarioclave[0].equals(usuario) && usuarioclave[1].equals(clave)) {
+                    System.out.println("\nBienvenido " + usuario);
+                    existe = true;
+                    Menu m = new Menu();
+                    m.ingresoSistema();
+                }
+
+                }
+                if (!existe) {
+                    System.out.println("Usuario o clave incorrectos");
+            }
+        } catch (IOException e) {
+            e.getCause();
+        }
     }
     
-    
-    
+    public void CambioContra(){
+        try {
+            archivo = new File("C:\\Users\\javy\\Documents\\PRC4\\FarmaFiorella\\FarmaFiorella\\Miembros.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
 
+            System.out.println("Usuario: ");
+            usuario = lector.nextLine();
+            System.out.println("Clave: ");
+            clave = lector.nextLine();
+
+            //String linea;
+            
+            while ((linea = br.readLine()) != null) {
+                String[] usuarioclave = linea.split(",");
+                if (usuarioclave[0].equals(usuario) && usuarioclave[1].equals(clave)) {
+                    existe = true;
+                    System.out.println("Digite nueva contraseña: ");
+                    usuarioclave[1] = lector.nextLine();
+                    //String clave2;
+                    //clave2 = usuarioclave[1];
+                  
+                    System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
+                    escribir = new FileWriter(archivo,true);
+                    pw = new PrintWriter(escribir);
+                    pw.print(usuarioclave[1]);
+                    pw.close();
+                }
+
+                }
+                if (!existe) {
+                    System.out.println("Usuario o clave incorrectos");
+            }
+        } catch (IOException e) {
+            e.getCause();
+        }
+    }
 }
