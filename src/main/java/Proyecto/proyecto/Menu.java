@@ -1,4 +1,4 @@
-package guia1poo1.proyecto;
+package Proyecto.proyecto;
 
 /**
  *

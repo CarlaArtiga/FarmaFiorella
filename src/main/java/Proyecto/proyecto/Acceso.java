@@ -1,4 +1,4 @@
-package guia1poo1.proyecto;
+package Proyecto.proyecto;
 import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -107,7 +107,7 @@ public class Acceso {
     public void InicioSesion() {
     
         try {
-            archivo = new File("C:\\Users\\javy\\Documents\\PRC4\\FarmaFiorella\\FarmaFiorella\\Miembros.txt");
+            archivo = new File("Miembros.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -137,7 +137,7 @@ public class Acceso {
     
     public void CambioContra(){
         try {
-            archivo = new File("C:\\Users\\javy\\Documents\\PRC4\\FarmaFiorella\\FarmaFiorella\\Miembros.txt");
+            archivo = new File("Miembros.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
