@@ -28,10 +28,6 @@ public class Acceso {
     private String[] acceso = new String[3];
     private boolean existe = false;
     
-    //atributos que serviran para la escritura de archivo
-   
-    private FileWriter escribir = null;
-    private PrintWriter pw = null;
     
 
     //Constructor
@@ -160,15 +156,12 @@ public class Acceso {
                     
                   
                     System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
-                    escribir = new FileWriter(archivo,true);
-                    pw = new PrintWriter(escribir);
-                    pw.print(usuarioclave[1]);
-                    pw.close();
+                   
                 }
 
                 }
                 if (!existe) {
-                    System.out.println("Usuario o clave incorrectos");
+                    System.out.println("Usuario o clave no encontrados");
             }
         } catch (IOException e) {
             e.getCause();

@@ -66,6 +66,7 @@ public class Menu {
     //Metodo para para menu
     public void ingresoSistema() {
         do {
+            System.out.println("");
             System.out.println(mensaje);
             System.out.println(opcion1);
             System.out.println(opcion2);
@@ -80,8 +81,7 @@ public class Menu {
                     break;
                 case 2:
                     //Mostrar inventario
-                    Producto p = new Producto();
-                    p.MostrarInventario();
+                    
                     break;
                 case 3:
                     //cambio de contraseña
