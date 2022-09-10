@@ -27,9 +27,8 @@ public class Acceso {
     private BufferedReader br = null;
     private String[] acceso = new String[3];
     private boolean existe = false;
+    String nuevaContra = null;
     
-    
-
     //Constructor
     public Acceso() {
     }
@@ -134,8 +133,12 @@ public class Acceso {
     //Metodo para cambiar contraseña
     public void CambioContra(){
         try {
-            
+
+
             archivo = new File("FarmaFiorella\\Miembros.txt");
+
+
+
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -152,11 +155,10 @@ public class Acceso {
                     existe = true;
                     System.out.print("Digite nueva contraseña: ");
                     usuarioclave[1] = lector.nextLine();
-                
-                    
+
                 
                     System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
-                
+
                 }
 
                 }
