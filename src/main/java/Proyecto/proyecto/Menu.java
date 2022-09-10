@@ -1,19 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package guia1poo1.proyecto;
+package Proyecto.proyecto;
 
 /**
  *
  * @author LENOVO
  */
 import java.util.Scanner;
-
 public class Menu {
-
-    //Impresion de mensajes
-    private String saludo = "Bienvenido (nombre: )";
+    //Instancia de la clase acceso
+    static Acceso ac = new Acceso();
+    
+    //Atributos para estructurar el menu
     private String mensaje = "¿Que desea hacer?";
     private String opcion1 = "1- Venta nueva";
     private String opcion2 = "2- Consultar inventarios";
@@ -22,17 +18,11 @@ public class Menu {
     private int opc;
     private Scanner lector = new Scanner(System.in);
 
+    //constructor
     public Menu() {
     }
 
-    public String getSaludo() {
-        return saludo;
-    }
-
-    public void setSaludo(String saludo) {
-        this.saludo = saludo;
-    }
-
+    //getter y setter
     public String getMensaje() {
         return mensaje;
     }
@@ -73,11 +63,10 @@ public class Menu {
         this.opcion4 = opcion4;
     }
 
-    //Procedimiento o Funcion
+    //Metodo para para menu
     public void ingresoSistema() {
         do {
-            System.out.println(" ");
-            System.out.println(saludo);
+            System.out.println("");
             System.out.println(mensaje);
             System.out.println(opcion1);
             System.out.println(opcion2);
@@ -87,12 +76,16 @@ public class Menu {
             opc = lector.nextInt();
             switch (opc) {
                 case 1:
+                    //venta nueva
                     System.out.println("Opcion no disponible aun");
                     break;
                 case 2:
+                    //Mostrar inventario
+                    
                     break;
                 case 3:
-                    System.out.println("Opcion no disponible aun");
+                    //cambio de contraseña
+                    ac.CambioContra();
                     break;
                 case 4:
                     System.out.println("Saliendo del sistema...");
@@ -103,7 +96,5 @@ public class Menu {
                     break;
             }
         } while (opc != 4);
-
     }
-
 }
