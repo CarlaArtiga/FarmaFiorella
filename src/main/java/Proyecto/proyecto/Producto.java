@@ -174,6 +174,7 @@ public class Producto {
     public void menuInventario(){
         
         String opc;
+
         do {
             System.out.println("");
             System.out.println("Elija si desea ver TODO el inventario o solo UNO");
@@ -191,7 +192,9 @@ public class Producto {
                     break;
                 case "SALIR":
 
+
                     System.out.println("Saliendo de inventario...");
+
                     Menu m = new Menu();
                     m.ingresoSistema();
                     break;      
