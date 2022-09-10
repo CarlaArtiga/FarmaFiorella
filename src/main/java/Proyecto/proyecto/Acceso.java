@@ -136,9 +136,6 @@ public class Acceso {
 
             archivo = new File("Miembros.txt");
 
-            
-            
-
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -155,8 +152,7 @@ public class Acceso {
                     existe = true;
                     System.out.print("Digite nueva contraseña: ");
                     usuarioclave[1] = lector.nextLine();
-                    //String clave2;
-                    //clave2 = usuarioclave[1];
+
 
                     System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
                     
