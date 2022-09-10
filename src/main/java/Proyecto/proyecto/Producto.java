@@ -15,11 +15,11 @@ public class Producto {
     //Atributos privados con tamaño de 10 elementos cada uno
     private String[] Productos = new String[10];
     private int[] IdProducto = new int[10];
-   
+
     private int[] Cantidad = new int[10];
 
     //Atributo para lectura de variables
-     Scanner lector = new Scanner(System.in);
+    Scanner lector = new Scanner(System.in);
     
     //Atributos para busqueda
     private int idprod;
@@ -52,7 +52,7 @@ public class Producto {
         Productos[8] = "Jarabe";
         Productos[9] = "Antihipertensivo";
 
-       
+
 
         //Valores iniciales para array cantidad
         Cantidad[0] = 30;
@@ -117,7 +117,7 @@ public class Producto {
         this.encontrado = encontrado;
     }
 
-   
+
 
     //Metodo que muestra lo que contienen los 3 arrays
     public void MostrarInventario() {
@@ -139,7 +139,7 @@ public class Producto {
         
         System.out.println("Digite el codigo del producto: ");
         idprod = lector.nextInt();
-       
+
         if (idprod < 0 || idprod > 10) {
             System.out.println("Error, elemento no existe en la lista");
         } else {
@@ -156,8 +156,7 @@ public class Producto {
         
     }
     
-    public void BuscarProd(){
-       
+    public void BuscarProd(){ 
         System.out.print("Ingrese el producto a buscar: ");
         prod = lector.nextLine();
         
@@ -170,6 +169,38 @@ public class Producto {
         if(!encontrado){
             System.out.println("Producto no encontrado");
         }
+    }
+
+    public void menuInventario(){
+        
+        String opc;
+        Scanner lector = new Scanner(System.in);
+        
+        do {
+            System.out.println("");
+            System.out.println("Elija si desea ver TODO el inventario o solo UNO");
+            System.out.println("TODOS");
+            System.out.println("UNO");
+            System.out.println("SALIR");
+            System.out.print("Escriba la opcion: ");
+            opc = lector.nextLine();
+            switch (opc) {
+                case "TODOS":
+                MostrarInventario();
+                    break;
+                case "UNO":
+                
+                    break;
+                case "SALIR":
+                    System.out.println("Saliendo del sistema...");
+                    Menu m = new Menu();
+                    m.ingresoSistema();
+                    break;      
+                default:
+                    System.out.println("Opcion no definida");
+                    break;
+            }
+        } while (opc != "TODOS" && (opc != "UNO") && (opc != "SALIR"));
     }
     
 }

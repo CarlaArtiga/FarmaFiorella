@@ -103,7 +103,7 @@ public class Acceso {
     public void InicioSesion() {
     
         try {
-            archivo = new File("Miembros.txt");
+            archivo = new File("FarmaFiorella\\Miembros.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -135,7 +135,7 @@ public class Acceso {
     public void CambioContra(){
         try {
             
-            archivo = new File("Miembros.txt");
+            archivo = new File("FarmaFiorella\\Miembros.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
