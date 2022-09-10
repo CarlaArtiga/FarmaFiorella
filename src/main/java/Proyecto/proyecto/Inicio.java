@@ -4,7 +4,7 @@ public class Inicio {
     
     //Instanciar clase
     static Acceso ac = new Acceso();
-   
+
 
     public static void main(String[] args) {
         
