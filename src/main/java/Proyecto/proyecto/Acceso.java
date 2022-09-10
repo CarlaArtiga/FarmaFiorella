@@ -28,8 +28,6 @@ public class Acceso {
     private String[] acceso = new String[3];
     private boolean existe = false;
     
-    
-
     //Constructor
     public Acceso() {
     }
