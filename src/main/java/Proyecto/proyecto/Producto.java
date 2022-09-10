@@ -174,7 +174,12 @@ public class Producto {
     public void menuInventario(){
         
         String opc;
+<<<<<<< HEAD
 
+=======
+        Scanner lector = new Scanner(System.in);
+        
+>>>>>>> f40d846e78deaa8077f4ad38e84762ff25e41a46
         do {
             System.out.println("");
             System.out.println("Elija si desea ver TODO el inventario o solo UNO");
@@ -191,10 +196,14 @@ public class Producto {
                 
                     break;
                 case "SALIR":
+<<<<<<< HEAD
 
 
                     System.out.println("Saliendo de inventario...");
 
+=======
+                    System.out.println("Saliendo del sistema...");
+>>>>>>> f40d846e78deaa8077f4ad38e84762ff25e41a46
                     Menu m = new Menu();
                     m.ingresoSistema();
                     break;      

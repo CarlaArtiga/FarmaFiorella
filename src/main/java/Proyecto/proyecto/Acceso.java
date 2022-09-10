@@ -134,10 +134,15 @@ public class Acceso {
     public void CambioContra(){
         try {
 
+<<<<<<< HEAD
 
             archivo = new File("Miembros.txt");
 
 
+=======
+            archivo = new File("Miembros.txt");
+
+>>>>>>> f40d846e78deaa8077f4ad38e84762ff25e41a46
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -154,9 +159,20 @@ public class Acceso {
                     existe = true;
                     System.out.print("Digite nueva contraseña: ");
                     usuarioclave[1] = lector.nextLine();
+<<<<<<< HEAD
 
                     System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
  
+=======
+                    //String clave2;
+                    //clave2 = usuarioclave[1];
+
+                    System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
+                    escribir = new FileWriter(archivo,true);
+                    pw = new PrintWriter(escribir);
+                    pw.println(usuarioclave[1]);
+                    pw.close();
+>>>>>>> f40d846e78deaa8077f4ad38e84762ff25e41a46
                 }
 
                 }
