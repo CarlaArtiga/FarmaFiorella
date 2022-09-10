@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Menu {
     //Instancia de la clase acceso
     static Acceso ac = new Acceso();
+    static Producto pr = new Producto();
     
     //Atributos para estructurar el menu
     private String mensaje = "¿Que desea hacer?";
@@ -81,7 +82,7 @@ public class Menu {
                     break;
                 case 2:
                     //Mostrar inventario
-                    
+                    pr.menuInventario();
                     break;
                 case 3:
                     //cambio de contraseña
