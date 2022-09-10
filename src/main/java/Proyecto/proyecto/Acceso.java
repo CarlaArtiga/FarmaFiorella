@@ -134,7 +134,9 @@ public class Acceso {
     public void CambioContra(){
         try {
 
+
             archivo = new File("Miembros.txt");
+
 
 
             fr = new FileReader(archivo);
@@ -153,6 +155,9 @@ public class Acceso {
                     existe = true;
                     System.out.print("Digite nueva contraseña: ");
                     usuarioclave[1] = lector.nextLine();
+
+                
+                    System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
 
                 }
 
