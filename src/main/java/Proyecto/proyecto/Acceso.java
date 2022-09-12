@@ -102,7 +102,7 @@ public class Acceso {
     public void InicioSesion() {
     
         try {
-            archivo = new File("FarmaFiorella\\Miembros.txt");
+            archivo = new File("Miembros.txt");
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
@@ -118,7 +118,16 @@ public class Acceso {
                     System.out.println("\nBienvenido " + usuario);
                     existe = true;
                     Menu m = new Menu();
-                    m.ingresoSistema();
+                    if(usuario.equals("admin")){
+                        m.ingresoSistema();
+                    }
+                    if(usuario.equals("vendedor")){
+                        m.ingresoVendedor();
+                    }
+                    if(usuario.equals("invitado")){
+                        m.IngresoInvitado();
+                    }
+                    //m.ingresoSistema();
                 }
 
                 }

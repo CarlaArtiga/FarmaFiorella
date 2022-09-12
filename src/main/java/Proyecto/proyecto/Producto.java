@@ -201,6 +201,41 @@ public class Producto {
         } while (opc != "TODOS" && (opc != "UNO") && (opc != "SALIR"));
     }
     
+    public void menuInventarioVent(){
+        
+        String opc;
+
+        do {
+            System.out.println("");
+            System.out.println("Elija si desea ver TODO el inventario o solo UNO");
+            System.out.println("TODOS");
+            System.out.println("UNO");
+            System.out.println("SALIR");
+            System.out.print("Escriba la opcion: ");
+            opc = lector.nextLine();
+            switch (opc) {
+                case "TODOS":
+                MostrarInventario();
+                    break;
+                case "UNO":
+                BusquedaVendedor();
+                    break;
+                case "SALIR":
+                    System.out.println("Saliendo de inventario...");
+                    Menu m = new Menu();
+                    m.ingresoVendedor();
+                    break;      
+                default:
+                    System.out.println("Opcion no definida");
+                    break;
+            }
+        } while (opc != "TODOS" && (opc != "UNO") && (opc != "SALIR"));
+    }
+    
+    
+    
+    
+    
     public void Busqueda(){
         Scanner lector2 = new Scanner(System.in);
         int opcion;
@@ -223,6 +258,35 @@ public class Producto {
                 case 3:
                     System.out.println("Saliendo del menu de busqueda...");
                     menuInventario();
+                    break;
+                default:
+                    System.out.println("Opcion no defininda");
+                    break;
+            }
+        }while (opcion != 3);
+    }
+     public void BusquedaVendedor(){
+        Scanner lector2 = new Scanner(System.in);
+        int opcion;
+        do{
+            System.out.println("");
+            System.out.println("¿Desea buscar por codigo o nombre?");
+            System.out.println("1- Por Codigo ");
+            System.out.println("2- Por Nombre ");
+            System.out.println("3- Salir");
+            System.out.print("Digite una opcion: ");
+            opcion = lector2.nextInt();
+            
+            switch (opcion){
+                case 1: 
+                    BuscarID();
+                    break;
+                case 2:
+                    BuscarProd();
+                    break;
+                case 3:
+                    System.out.println("Saliendo del menu de busqueda...");
+                    menuInventarioVent();
                     break;
                 default:
                     System.out.println("Opcion no defininda");
