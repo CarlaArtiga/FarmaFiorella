@@ -5,11 +5,13 @@ package Proyecto.proyecto;
  * @author LENOVO
  */
 import java.util.Scanner;
+
 public class Menu {
+
     //Instancia de la clase acceso
     static Acceso ac = new Acceso();
     static Producto pr = new Producto();
-    
+
     //Atributos para estructurar el menu
     private String mensaje = "¿Que desea hacer?";
     private String opcion1 = "1- Venta nueva";
@@ -64,7 +66,7 @@ public class Menu {
         this.opcion4 = opcion4;
     }
 
-    //Metodo para para menu
+    //Metodo para para menu para admin
     public void ingresoSistema() {
         do {
             System.out.println("");
@@ -97,5 +99,63 @@ public class Menu {
                     break;
             }
         } while (opc != 4);
+    }
+
+    public void ingresoVendedor() {
+        do {
+            System.out.println("");
+            System.out.println(mensaje);
+            System.out.println("1- Venta nueva");
+            System.out.println("2- Consultar inventarios");
+            System.out.println("3- Salir del sistema");
+
+            System.out.print("Digite la opcion: ");
+            opc = lector.nextInt();
+            switch (opc) {
+                case 1:
+                    //venta nueva
+                    System.out.println("Opcion no disponible aun");
+                    break;
+                case 2:
+                    //Mostrar inventario
+                    pr.menuInventarioVent();
+                    break;
+                case 3:
+                    System.out.println("Saliendo del sistema...");
+                    System.exit(0);
+
+                    break;
+
+                default:
+                    System.out.println("Opcion no definida");
+                    break;
+            }
+        } while (opc != 3);
+    }
+
+    public void IngresoInvitado() {
+        do {
+            System.out.println("");
+            System.out.println(mensaje);
+            System.out.println("1- Ver precios");
+            System.out.println("2- Salir del sistema");
+
+            System.out.print("Digite la opcion: ");
+            opc = lector.nextInt();
+            switch (opc) {
+                case 1:
+                    //venta nueva
+                    System.out.println("Opcion no disponible aun");
+                    break;
+                case 2:
+                    System.out.println("Saliendo del sistema...");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Opcion no definida");
+                    break;
+            }
+        } while (opc != 2);
     }
 }
