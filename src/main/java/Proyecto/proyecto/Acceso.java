@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public class Acceso {
     
-    //Atributos acceso
+    //Atributos acceso para imprimir mensajes
     private String usuario        = "";
     private String clave          = "";
     private String nombreSistema  = "FarmaFiorella";
@@ -92,7 +92,7 @@ public class Acceso {
         this.ingreseclave = ingreseclave;
     }
 
-    //Procedimiento psts imprimir la bienvenida al usuario
+    //Procedimiento para imprimir la bienvenida al usuario
     public void bienvenidad() {
         System.out.println(bienvenida + nombreSistema);
         System.out.println(mensaje);
@@ -142,21 +142,14 @@ public class Acceso {
     //Metodo para cambiar contraseña
     public void CambioContra(){
         try {
-
-
             archivo = new File("Miembros.txt");
-
-
-
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
 
             System.out.print("Usuario: ");
             usuario = lector.nextLine();
             System.out.print("Clave: ");
-            clave = lector.nextLine();
-
-            
+            clave = lector.nextLine();            
             
             while ((linea = br.readLine()) != null) {
                 String[] usuarioclave = linea.split(",");
@@ -167,9 +160,7 @@ public class Acceso {
 
                 
                     System.out.println("Su nueva contraseña es: " + usuarioclave[1]);
-
                 }
-
                 }
                 if (!existe) {
                     System.out.println("Usuario o clave no encontrados");

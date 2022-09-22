@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-    //Instancia de la clase acceso
+    //Instancia de clases
     static Acceso ac = new Acceso();
     static Producto pr = new Producto();
-
+    static Ventas v = new Ventas();
     //Atributos para estructurar el menu
     private String mensaje = "¿Que desea hacer?";
     private String opcion1 = "1- Venta nueva";
@@ -78,10 +78,17 @@ public class Menu {
             System.out.print("Digite la opcion: ");
             opc = lector.nextInt();
             switch (opc) {
-                case 1:
-                    //venta nueva
-                    System.out.println("Opcion no disponible aun");
-                    break;
+                case 1: //venta nueva
+                {
+                   
+                    v.MostrarProducto();
+                    v.AgregarProducto();
+                    v.MostrarCompras();
+                    v.Factura();
+                    v.Ticket();
+                }
+
+                break;
                 case 2:
                     //Mostrar inventario
                     pr.menuInventario();
@@ -112,10 +119,15 @@ public class Menu {
             System.out.print("Digite la opcion: ");
             opc = lector.nextInt();
             switch (opc) {
-                case 1:
+                case 1: 
                     //venta nueva
-                    System.out.println("Opcion no disponible aun");
-                    break;
+                    v.MostrarProducto();
+                    v.AgregarProducto();
+                    v.MostrarCompras();
+                    v.Factura();
+                    v.Ticket();
+
+                break;
                 case 2:
                     //Mostrar inventario
                     pr.menuInventarioVent();
@@ -145,7 +157,7 @@ public class Menu {
             switch (opc) {
                 case 1:
                     //venta nueva
-                    System.out.println("Opcion no disponible aun");
+                    v.MostrarProducto();
                     break;
                 case 2:
                     System.out.println("Saliendo del sistema...");

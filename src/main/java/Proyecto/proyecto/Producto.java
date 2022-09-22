@@ -128,7 +128,7 @@ public class Producto {
 
             System.out.print(IdProducto[i] + formato);
             System.out.print(Productos[i]);
-            System.out.print(" ----> ");
+            System.out.print(", ");
             System.out.print(Cantidad[i]);
             System.out.println("");
         }
@@ -293,6 +293,25 @@ public class Producto {
                     break;
             }
         }while (opcion != 3);
+    }
+     public void Disminuir(int idproducto, int cant) {
+        
+        if (idproducto < 0 || idproducto > 10) {
+            System.out.println("Error, elemento no existe en la lista");
+        } else {
+            for (int i = 0; i < IdProducto.length; i++) {
+                if(idproducto == i){
+                    Cantidad[(i-1)] = Cantidad[(i-1)] - cant;
+                    //System.out.println(IdProducto[(i-1)]+ " " + Productos[(i-1)] + " " + Cantidad[(i-1)]);
+                    encontrado = true;
+                    
+                }
+            }
+            if(!encontrado){
+                System.out.println("Producto no encontrado");
+            }
+        }
+        
     }
     
 }

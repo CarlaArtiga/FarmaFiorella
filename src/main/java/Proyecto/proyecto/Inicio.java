@@ -7,7 +7,6 @@ public class Inicio {
 
     public static void main(String[] args) {
         
-
         ac.bienvenidad();
         ac.InicioSesion();
         
