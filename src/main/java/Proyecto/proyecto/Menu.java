@@ -126,6 +126,7 @@ public class Menu {
                     v.MostrarCompras();
                     v.Factura();
                     v.Ticket();
+                    
 
                 break;
                 case 2:

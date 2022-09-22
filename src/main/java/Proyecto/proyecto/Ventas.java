@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.lang.String;
+
 
 public class Ventas {
 
@@ -39,23 +39,23 @@ public class Ventas {
     private ArrayList cant = new ArrayList();
     //Lista para guardar los productos que el usuario desee adquirir
     private ArrayList CarritoComp = new ArrayList();
-    
+
     //Variable bandera: 0 = cantidad ingresada, 1 = existencia de inventario
     private int CantidadVenta;
 
     //atributos para escritura de archivo: general el ticket
     FileWriter Archivo = null;
     PrintWriter pw = null;
-    
+
     //Atributos para el ticket
-     private float SubTotalTicket = 0;
-     private float TotalTicket = 0;
-     private float DescuentoTicket = (float) 0.03;
+    private float SubTotalTicket = 0;
+    private float TotalTicket = 0;
+    private float DescuentoTicket = (float) 0.03;
 
     //Constructor para iniciarlizar valores
     public Ventas() {
 
-    //Valores iniciales para la lista ventas
+        //Valores iniciales para la lista ventas
         Precio.add(0.10);
         Precio.add(5);
         Precio.add(3);
@@ -236,12 +236,13 @@ public class Ventas {
                         //Si la cantidad es mayor que el stock entonces se venden las existencias
                         if (cantidad[i] > p.getCantidad()[(i - 1)]) {
                             System.out.println("Lo sentimos, Solo tenemos: " + p.getCantidad()[(i - 1)]);
+                            System.out.println("Pero, le vendemos las existencias");
                             //El stock se pasa a una variable
                             CantidadVenta = p.getCantidad()[(i - 1)];
                             //Se disminuye el stock a 0
                             p.Disminuir(prod, p.getCantidad()[i - 1]);
                             //Y la cantidad vendida la pasamos a una lista
-                             cant.add(CantidadVenta);
+                            cant.add(CantidadVenta);
 
                         } else {
                             //Sino la cantidad otorgada por el usuario se pasa a CantidadVenta  
@@ -249,9 +250,12 @@ public class Ventas {
                             //Se disminuye el stock
                             p.Disminuir(prod, cantidad[i]);
                             //Se pasa a una lista
-                             cant.add(CantidadVenta);
+                            cant.add(CantidadVenta);
                         }
-                       
+                        if (p.getCantidad()[i - 1] == 0) {
+                            System.out.println("Lo sentimos, producto agotado");
+                            cont--;
+                        }
 
                     }
                 }
@@ -267,82 +271,109 @@ public class Ventas {
 
     }
 //Metodo que recorre hasta la cantidad de productos adquiridos y muestra los detalles de compra
+
     void MostrarCompras() {
+
         System.out.println("");
         System.out.println("***Resumen de articulos***");
-        for (int i = 0; i < cont; i++) {
-            System.out.print(CarritoComp.get(i) + " ");
-            System.out.print("Cantidad: " + cant.get(i) + " ");
-            System.out.print("Precio:  $");
-            System.out.println(Precio.get(i));
+        //Si el contador es diferente de 0, quiere decir que hay articulos
+        if (cont != 0) {
+            for (int i = 0; i < cont; i++) {
+                System.out.print(CarritoComp.get(i) + " ");
+                System.out.print("Cantidad: " + cant.get(i) + " ");
+                System.out.print("Precio:  $");
+                System.out.println(Precio.get(i));
+            }
+        } else {
+            System.out.println("No ha ingresado ningun producto, gracias por visitarnos");
         }
+
     }
 //Metodo facturar
+
     void Factura() {
-        System.out.println("");
-        System.out.println("****Factura de Compra****");
-        System.out.println("Farmacia FarmaFiorella");
-        System.out.println("");
         int i = 0;
-//Se recorre hasta la cantidad de productos adquiridos
-        for (i = 0; i < cont; i++) {
-            //Se calcula el subtotal: cantidad por precio
-            SubTotal = Integer.parseInt(cant.get(i).toString()) * Float.parseFloat(Precio.get(i).toString());
-            System.out.println(CarritoComp.get(i) + "---- " + cant.get(i) + " x " + Precio.get(i) + " = " + SubTotal);
-            //Se calcula la suma del subtotal
-            Total = Total + SubTotal;
-        }
-        //Si el total de compra es mayor que 20 entonces se calcula el descuento
-        if (Total > 20) {
-            Total = Total - (Total * Descuento);
-            System.out.println("Total de compra: " + Total);
-            
-        } else {
-            System.out.println("Total de compra: " + Total);
+        //Si el contador es 0, que no imprima la factura
+        if (cont != 0) {
+            System.out.println("");
+            System.out.println("****Factura de Compra****");
+            System.out.println("Farmacia FarmaFiorella");
+            System.out.println("");
+            //Se recorre hasta la cantidad de productos adquiridos
+            for (i = 0; i < cont; i++) {
+                //Se calcula el subtotal: cantidad por precio
+                SubTotal = Integer.parseInt(cant.get(i).toString()) * Float.parseFloat(Precio.get(i).toString());
+                System.out.println(CarritoComp.get(i) + "---- " + cant.get(i) + " x " + Precio.get(i) + " = " + SubTotal);
+                //Se calcula la suma del subtotal
+                Total = Total + SubTotal;
+            }
+            //Si el total de compra es mayor que 20 entonces se calcula el descuento
+            if (Total > 20) {
+                Total = Total - (Total * Descuento);
+                System.out.println("Total de compra: " + Total);
+
+            } else {
+                System.out.println("Total de compra: " + Total);
+            }
         }
 
     }
 //Metodo de escritura de archivo para generar ticket
 //Se difiere del anterior con el cambio de System a print writer
+
     void Ticket() {
-        try {
-            Archivo = new FileWriter("Factura.txt", true);
-            pw = new PrintWriter(Archivo);
-            pw.println("");
-            pw.println("****Factura de Compra****");
-            pw.println("Farmacia FarmaFiorella");
-            pw.println("");
-            int i = 0;
-
-            for (i = 0; i < cont; i++) {
-                SubTotalTicket = Integer.parseInt(cant.get(i).toString()) * Float.parseFloat(Precio.get(i).toString());
-
-                pw.println(CarritoComp.get(i) + "---- " + cant.get(i) + " x " + Precio.get(i) + " = " + SubTotalTicket);
-                TotalTicket = TotalTicket + SubTotalTicket;
-            }
-            if (TotalTicket > 20) {
-                TotalTicket = TotalTicket - (TotalTicket * DescuentoTicket);
-                pw.println("Total de compra: " + TotalTicket);
-                pw.println("----------------------------------------------------");
-                pw.println("");
-            } else {
-                pw.println("Total de compra: " + TotalTicket);
-                pw.println("----------------------------------------------------");
-                pw.println("");
-                System.out.println("Gracias por compras en FarmaFiorella, ticket generado");
-                System.out.println("Lo esperamos nuevamente");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+        //Si el contador es 0 que no genere el ticket
+        if (cont != 0) {
             try {
-                if (null != Archivo) {
-                    Archivo.close();
+                Archivo = new FileWriter("Factura.txt", true);
+                pw = new PrintWriter(Archivo);
+                pw.println("");
+                pw.println("****Factura de Compra****");
+                pw.println("Farmacia FarmaFiorella");
+                pw.println("");
+                int i = 0;
+
+                for (i = 0; i < cont; i++) {
+                    SubTotalTicket = Integer.parseInt(cant.get(i).toString()) * Float.parseFloat(Precio.get(i).toString());
+
+                    pw.println(CarritoComp.get(i) + "---- " + cant.get(i) + " x " + Precio.get(i) + " = " + SubTotalTicket);
+                    TotalTicket = TotalTicket + SubTotalTicket;
                 }
-            } catch (Exception e2) {
-                e2.printStackTrace();
+                if (TotalTicket > 20) {
+                    TotalTicket = TotalTicket - (TotalTicket * DescuentoTicket);
+                    pw.println("Total de compra: " + TotalTicket);
+                    pw.println("----------------------------------------------------");
+                    pw.println("");
+                } else {
+                    pw.println("Total de compra: " + TotalTicket);
+                    pw.println("----------------------------------------------------");
+                    pw.println("");
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (null != Archivo) {
+                        Archivo.close();
+                        System.out.println("Gracias por comprar en FarmaFiorella, ticket generado");
+                        System.out.println("Lo esperamos nuevamente");
+                        //Limpiamos las listas y valores, para evitar que se sobreescriban
+                        CarritoComp.clear();
+                        cant.clear();
+                        SubTotal = 0;
+                        Total = 0;
+                        SubTotalTicket = 0;
+                        TotalTicket = 0;
+                        cont = 0;
+                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
             }
+
         }
+
     }
-    
+
 }
